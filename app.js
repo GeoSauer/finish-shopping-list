@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 
-import { createList, getList } from './fetch-utils.js';
+import { createList, getList, boughtList } from './fetch-utils.js';
 
 import { renderList } from './render-utils.js';
 
@@ -58,6 +58,20 @@ function displayLists() {
     for (const list of lists) {
         const listEl = renderList(list);
         itemList.append(listEl);
+
+        listEl.addEventListener('click', async () => {
+            const response = await boughtList(list.id);
+            error = response.error;
+            const updatedList = response.data;
+
+            if (error) {
+                displayError();
+            } else {
+                const index = lists.indexOf(list);
+                lists[index] = updatedList;
+                displayLists();
+            }
+        });
     }
 }
 
