@@ -45,11 +45,17 @@
                 <form id="add-item-form">
                     <label>
                         Quantity:
-                        <input type="number" name="quantity" min="0" />
+                        <input
+                            type="number"
+                            name="quantity"
+                            min="0"
+                            placeholder="How many?"
+                            required
+                        />
                     </label>
                     <label>
                         Item:
-                        <input name="item" />
+                        <input name="item" placeholder="What item do you need?" required />
                     </label>
                     <button>Add Item</button>
                 </form>
