@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 
-import { createList } from './fetch-utils.js';
+import { createList, getList } from './fetch-utils.js';
 
 import { renderList } from './render-utils.js';
 
@@ -34,6 +34,20 @@ addItemForm.addEventListener('submit', async (e) => {
         lists.push(list);
         displayLists();
         addItemForm.reset();
+    }
+});
+
+window.addEventListener('load', async () => {
+    const response = await getList();
+
+    error = response.error;
+    lists = response.data;
+
+    if (error) {
+        displayError();
+    }
+    if (lists) {
+        displayLists();
     }
 });
 
