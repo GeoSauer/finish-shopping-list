@@ -6,7 +6,7 @@ export function renderList(list) {
     }
 
     const p = document.createElement('p');
-    p.textContent = list.item;
+    p.textContent = `${list.quantity} ${list.item}`;
     li.append(p);
 
     return li;

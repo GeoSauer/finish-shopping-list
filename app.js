@@ -23,6 +23,7 @@ addItemForm.addEventListener('submit', async (e) => {
     const formData = new FormData(addItemForm);
     const newList = {
         item: formData.get('item'), // add 'quantity' here as well?
+        quantity: formData.get('quantity'),
     };
 
     const response = await createList(newList);
