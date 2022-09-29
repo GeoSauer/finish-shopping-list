@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 
-import { createList, getList, boughtList, deleteAllLists } from './fetch-utils.js';
+import { createList, getList, boughtList, deleteAllBoughtLists } from './fetch-utils.js';
 
 import { renderList } from './render-utils.js';
 
@@ -15,14 +15,13 @@ const deleteButton = document.getElementById('delete-button');
 /* State */
 let lists = [];
 let error = null;
-
 /* Events */
 
 addItemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(addItemForm);
     const newList = {
-        item: formData.get('item'), // add 'quantity' here as well?
+        item: formData.get('item'),
         quantity: formData.get('quantity'),
     };
 
@@ -54,14 +53,20 @@ window.addEventListener('load', async () => {
 });
 
 deleteButton.addEventListener('click', async () => {
-    const response = await deleteAllLists();
+    const response = await deleteAllBoughtLists();
     error = response.error;
 
     if (error) {
         displayError();
     } else {
-        lists = [];
-
+        // lists = [];
+        const unBoughtLists = [];
+        for (const list of lists) {
+            if (!list.bought) {
+                unBoughtLists.push(list);
+            }
+        }
+        lists = unBoughtLists;
         displayLists();
     }
 });
