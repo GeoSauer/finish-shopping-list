@@ -27,3 +27,7 @@ header {
     align-items: center;
     width: 80vw;
 }
+
+.bought {
+    text-decoration: line-through;
+}

@@ -28,3 +28,7 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+export async function createList(list) {
+    return await client.from('lists').insert(list).single();
+}

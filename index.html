@@ -25,7 +25,7 @@
         <!-- css -->
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/global.css" />
-        <link rel="stylesheet" href="/list/global.css" />
+        <link rel="stylesheet" href="/styles/list.css" />
 
         <!-- add link for page specific css -->
     </head>
@@ -42,7 +42,7 @@
 
         <main>
             <section>
-                <form class="item-form">
+                <form id="add-item-form">
                     <label>
                         Quantity:
                         <input type="number" name="quantity" min="0" />
@@ -53,12 +53,21 @@
                     </label>
                     <button>Add Item</button>
                 </form>
-                <ul class="list">
-                    <p class="list-item bought">1 soul</p>
-                    <p class="list-item bought">2 classics</p>
-                    <p class="list-item unbought">3 purples</p>
+                <ul id="item-list">
+                    <li>
+                        <p class="list-item bought">1 soul</p>
+                    </li>
+                    <li>
+                        <p class="list-item bought">2 classics</p>
+                    </li>
+                    <li>
+                        <p class="list-item unbought">3 purples</p>
+                    </li>
                 </ul>
-                <button class="delete">Delete List</button>
+                <div class="container">
+                    <button id="delete-button">Delete List</button>
+                    <p id="error-display" class="error"></p>
+                </div>
             </section>
         </main>
     </body>
