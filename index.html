@@ -1,48 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>Get Them Groceries</title>
+        <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
 
-    <!-- title and favicon -->
-    <title>Supabase Web App</title>
-    <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
+        <!-- js -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script type="module" src="app.js"></script>
 
-    <!-- js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script type="module" src="app.js"></script>
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
+        />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
+        <!-- css -->
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="/styles/list.css" />
 
+        <!-- add link for page specific css -->
+    </head>
 
-    <!-- css -->
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-    <!-- add link for page specific css -->
+    <body>
+        <header class="page-header">
+            <img class="logo" src="/assets/magic.jpeg" alt="logo" />
+            <p class="title">Listify Your Groceries</p>
+            <nav>
+                <a href="/">Home</a>
+                <a id="sign-out-link" href="auth">Sign Out</a>
+            </nav>
+        </header>
 
-</head>
-
-<body>
-    <header class="page-header">
-        <img class="logo" src="/assets/html_css_js.png" alt="logo">
-        <p class="title">Supabase Web App</p>
-        <nav>
-            <a href="/">Home</a>
-            <a id="sign-out-link" href="auth">Sign Out</a>
-        </nav>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
-
+        <main>
+            <section>
+                <form id="add-item-form">
+                    <label>
+                        Quantity:
+                        <input
+                            type="number"
+                            name="quantity"
+                            min="0"
+                            placeholder="How many?"
+                            required
+                        />
+                    </label>
+                    <label>
+                        Item:
+                        <input name="item" placeholder="What item do you need?" required />
+                    </label>
+                    <button>Add Item</button>
+                </form>
+                <div class="container">
+                    <p>Click to check an item off the list</p>
+                    <ul id="item-list">
+                        <li>
+                            <p class="list-item bought"></p>
+                        </li>
+                        <li>
+                            <p class="list-item bought"></p>
+                        </li>
+                        <li>
+                            <p class="list-item unbought"></p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="delete-buttons">
+                    <button id="delete-button">Remove collected items</button>
+                    <p id="error-display" class="error"></p>
+                    <button id="delete-all-button">Remove all items</button>
+                    <p id="error-display" class="error"></p>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>
