@@ -41,6 +41,11 @@ export async function boughtList(id) {
     return await client.from('lists').update({ bought: true }).eq('id', id).single();
 }
 
-export async function deleteAllBoughtLists() {
+export async function deleteBoughtLists() {
     return await client.from('lists').delete().match({ bought: true });
+}
+
+export async function deleteAllLists() {
+    const user = getUser();
+    return await client.from('lists').delete().eq('user_id', user.id);
 }

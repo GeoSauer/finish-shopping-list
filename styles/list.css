@@ -37,12 +37,18 @@ header.page-header {
     text-decoration: line-through red;
 }
 
-.container {
+#delete-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: rows;
     align-items: center;
 }
 
 #add-item-form {
     margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
